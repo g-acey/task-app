@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/nav_graph_bottom_nav"
+    app:startDestination="@id/NormalFragment">
+
+    <fragment
+        android:id="@+id/NormalFragment"
+        android:name="org.ibda.myguessgame.NormalFragment"
+        android:label="fragment_normal"
+        tools:layout="@layout/fragment_normal">
+
+    </fragment>
+
+    <fragment
+        android:id="@+id/ImportantFragment"
+        android:name="org.ibda.myguessgame.ImportantFragment"
+        android:label="fragment_important"
+        tools:layout="@layout/fragment_important">
+
+    </fragment>
+
+    <fragment
+        android:id="@+id/UrgentFragment"
+        android:name="org.ibda.myguessgame.UrgentFragment"
+        android:label="fragment_urgent"
+        tools:layout="@layout/fragment_urgent">
+
+    </fragment>
+
+</navigation>

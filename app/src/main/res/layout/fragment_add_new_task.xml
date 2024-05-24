@@ -1,0 +1,111 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:padding="24dp"
+    tools:context=".AddNewTaskFragment"
+    android:background="@color/l_green">
+
+
+<TextView
+    android:id="@+id/textViewTitle"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:text="Task Title"
+    android:layout_marginBottom="8dp"/>
+
+<com.google.android.material.textfield.TextInputLayout
+    android:id="@+id/inputLayoutTitle"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_below="@id/textViewTitle">
+
+    <EditText
+        android:id="@+id/editTextTitle"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:inputType="text"
+        android:hint="Enter task title"/>
+
+</com.google.android.material.textfield.TextInputLayout>
+
+<TextView
+    android:id="@+id/textViewDescription"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:text="Task Description"
+    android:layout_below="@id/inputLayoutTitle"
+    android:layout_marginTop="16dp"
+    android:layout_marginBottom="8dp"/>
+
+<com.google.android.material.textfield.TextInputLayout
+    android:id="@+id/inputLayoutDescription"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_below="@id/textViewDescription">
+
+    <EditText
+        android:id="@+id/editTextDescription"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:inputType="textMultiLine"
+        android:hint="Enter task description"/>
+
+</com.google.android.material.textfield.TextInputLayout>
+
+<TextView
+    android:id="@+id/textViewCategory"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:text="Category"
+    android:layout_below="@id/inputLayoutDescription"
+    android:layout_marginTop="16dp"
+    android:layout_marginBottom="8dp"/>
+
+<com.google.android.material.textfield.TextInputLayout
+    android:id="@+id/inputLayoutCategory"
+    style="@style/Widget.Material3.TextInputLayout.OutlinedBox.ExposedDropdownMenu"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_below="@id/textViewCategory">
+
+      <AutoCompleteTextView
+        android:id="@+id/taskCategory"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        android:inputType="none"/>
+    <!--            android:text="Normal" />-->
+
+</com.google.android.material.textfield.TextInputLayout>
+<LinearLayout
+    android:id="@+id/buttonLayout"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="horizontal"
+    android:layout_centerHorizontal="true"
+    android:layout_alignParentBottom="true"
+    android:layout_marginTop="16dp">
+
+    <Button
+        android:id="@+id/cancelButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Cancel"
+        android:layout_weight="1"
+        android:layout_marginEnd="8dp"
+        android:backgroundTint="@color/white"
+        android:textColor="@color/black"/>
+
+    <Button
+        android:id="@+id/addTaskButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Add"
+        android:layout_weight="1"
+        android:layout_marginStart="8dp"
+        android:backgroundTint="@color/chocolate"/>
+</LinearLayout>
+
+</RelativeLayout>

@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+    <item
+        android:title="Normal"
+        android:id="@+id/NormalFragment"
+        android:icon="@drawable/ic_normal"
+        app:showAsAction="always"
+        />
+
+    <item
+        android:title="Important"
+        android:id="@+id/ImportantFragment"
+        android:icon="@drawable/ic_urgent"
+        app:showAsAction="always"
+        />
+
+    <item
+        android:title="Urgent"
+        android:id="@+id/UrgentFragment"
+        android:icon="@drawable/ic_important"
+        app:showAsAction="always"
+        />
+
+</menu>
