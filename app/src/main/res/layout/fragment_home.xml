@@ -41,7 +41,7 @@
                     android:layout_height="match_parent"
                     android:layout_weight="0.333"
                     android:gravity="center"
-                    android:onClick='@{() -> home.goToNav("new") }'
+                    android:onClick='@{() -> home.goToNav("New") }'
                     android:background="@drawable/white_background"
                     android:orientation="vertical">
 
@@ -72,7 +72,7 @@
                     android:background="@drawable/white_background"
                     android:gravity="center"
                     android:orientation="vertical"
-                    android:onClick='@{() -> home.goToNav("in progress") }'>
+                    android:onClick='@{() -> home.goToNav("In Progress") }'>
 
                     <TextView
                         android:id="@+id/textInProgressTitle"
@@ -99,7 +99,7 @@
                     android:background="@drawable/white_background"
                     android:gravity="center"
                     android:orientation="vertical"
-                    android:onClick='@{() -> home.goToNav("done") }'>
+                    android:onClick='@{() -> home.goToNav("Done") }'>
 
                     <TextView
                         android:id="@+id/textDoneTitle"
