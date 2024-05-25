@@ -45,7 +45,7 @@ class NormalViewModel : ViewModel() {
             override fun onResponse(call: Call<List<TaskInfo>>, response: Response<List<TaskInfo>>) {
                 if (response.isSuccessful) {
                     tasks.value = response.body()
-                    updateTaskCounts()
+//                    updateTaskCounts()
                 } else {
                     Log.e("NormalViewModel", "Failed to get results by category and status: ${response.errorBody()?.string()}")
                 }
@@ -53,17 +53,17 @@ class NormalViewModel : ViewModel() {
         })
     }
 
-    private fun updateTaskCounts() {
-        tasks.value?.let { taskList ->
-            for (task in taskList) {
-                when (task.status) {
-                    "New" -> newTaskTotal.value = newTaskTotal.value?.plus(1)
-                    "In Progress" -> progressTaskTotal.value = progressTaskTotal.value?.plus(1)
-                    "Done" -> doneTaskTotal.value = doneTaskTotal.value?.plus(1)
-                }
-            }
-        }
-    }
+//    private fun updateTaskCounts() {
+//        tasks.value?.let { taskList ->
+//            for (task in taskList) {
+//                when (task.status) {
+//                    "New" -> newTaskTotal.value = newTaskTotal.value?.plus(1)
+//                    "In Progress" -> progressTaskTotal.value = progressTaskTotal.value?.plus(1)
+//                    "Done" -> doneTaskTotal.value = doneTaskTotal.value?.plus(1)
+//                }
+//            }
+//        }
+//    }
 
     fun actionText(): String {
         return when (this.destination.value) {
@@ -72,4 +72,9 @@ class NormalViewModel : ViewModel() {
             else -> "Details"
         }
     }
+
+    fun goToTaskDetail() {
+        this.destination.value = "TaskDetail"
+    }
+
 }

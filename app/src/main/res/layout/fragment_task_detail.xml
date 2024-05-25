@@ -45,6 +45,7 @@
                     android:layout_height="wrap_content"
                     android:layout_marginBottom="16dp"
                     android:inputType="text"
+                    android:text='@{taskDetail.titleDetail.toString()}'
                     android:textSize="14sp" />
 
                 <!-- Description -->
@@ -62,6 +63,7 @@
                     android:layout_height="wrap_content"
                     android:layout_marginBottom="16dp"
                     android:inputType="textMultiLine"
+                    android:text='@{taskDetail.detailDetail.toString()}'
                     android:textSize="14sp" />
 
                 <!-- Category -->
@@ -79,6 +81,7 @@
                     android:layout_height="wrap_content"
                     android:layout_marginBottom="16dp"
                     android:inputType="text"
+                    android:text='@{taskDetail.categoryDetail.toString()}'
                     android:textSize="14sp" />
 
                 <!-- Status -->
@@ -96,6 +99,7 @@
                     android:layout_height="wrap_content"
                     android:layout_marginBottom="16dp"
                     android:inputType="text"
+                    android:text='@{taskDetail.statusDetail.toString()}'
                     android:textSize="14sp" />
 
                 <!-- Created Time -->
@@ -112,6 +116,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginBottom="16dp"
+                    android:text='@{taskDetail.createdTimeDetail.toString()}'
                     android:textSize="14sp" />
 
                 <!-- Finished Time -->
@@ -128,6 +133,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginBottom="16dp"
+                    android:text='@{taskDetail.finishTimeDetail.toString()}'
                     android:textSize="14sp" />
 
                 <!-- Duration -->

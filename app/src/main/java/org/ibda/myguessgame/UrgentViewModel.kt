@@ -17,6 +17,10 @@ class UrgentViewModel : ViewModel() {
 
     val destination = MutableLiveData<String>("")
 
+    val newTaskTotal = MutableLiveData<Int>(0)
+    val progressTaskTotal = MutableLiveData<Int>(0)
+    val doneTaskTotal = MutableLiveData<Int>(0)
+
     init {
         this.retrofit = Retrofit.Builder()
             .baseUrl("http://10.0.2.2:5000")
@@ -40,12 +44,25 @@ class UrgentViewModel : ViewModel() {
             override fun onResponse(call: Call<List<TaskInfo>>, response: Response<List<TaskInfo>>) {
                 if (response.isSuccessful) {
                     tasks.value = response.body()
+//                    updateTaskCounts()
                 } else {
                     Log.e("UrgentViewModel", "Failed to get results by category and status: ${response.errorBody()?.string()}")
                 }
             }
         })
     }
+
+//    private fun updateTaskCounts() {
+//        tasks.value?.let { taskList ->
+//            for (task in taskList) {
+//                when (task.status) {
+//                    "New" -> newTaskTotal.value = newTaskTotal.value?.plus(1)
+//                    "In Progress" -> progressTaskTotal.value = progressTaskTotal.value?.plus(1)
+//                    "Done" -> doneTaskTotal.value = doneTaskTotal.value?.plus(1)
+//                }
+//            }
+//        }
+//    }
 
     fun actionText(): String {
         return when (this.destination.value) {
