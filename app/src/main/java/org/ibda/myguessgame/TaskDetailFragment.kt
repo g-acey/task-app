@@ -26,6 +26,8 @@ class TaskDetailFragment : Fragment() {
         this.binding.taskDetail = vm
         this.binding.lifecycleOwner = viewLifecycleOwner
 
+        val taskId = arguments?.getInt("taskId") ?: -1 // Default value if taskId is not found
+        vm.taskDetail(taskId)
 
         return rootView
     }

@@ -10,6 +10,13 @@
         android:name="org.ibda.myguessgame.NormalFragment"
         android:label="fragment_normal"
         tools:layout="@layout/fragment_normal">
+        <action
+            android:id="@+id/action_normalFragment_to_taskDetailFragment"
+            app:destination="@id/taskDetailFragment">
+            <argument
+                android:name="taskId"
+                app:argType="integer" />
+        </action>
 
     </fragment>
 
@@ -19,6 +26,13 @@
         android:label="fragment_important"
         tools:layout="@layout/fragment_important">
 
+        <action
+            android:id="@+id/action_ImportantFragment_to_taskDetailFragment"
+            app:destination="@id/taskDetailFragment">
+            <argument
+                android:name="taskId"
+                app:argType="integer" />
+        </action>
     </fragment>
 
     <fragment
@@ -27,6 +41,25 @@
         android:label="fragment_urgent"
         tools:layout="@layout/fragment_urgent">
 
+        <action
+            android:id="@+id/action_UrgentFragment_to_taskDetailFragment"
+            app:destination="@id/taskDetailFragment">
+            <argument
+                android:name="taskId"
+                app:argType="integer" />
+        </action>
+    </fragment>
+
+    <fragment
+        android:id="@+id/taskDetailFragment"
+        android:name="org.ibda.myguessgame.TaskDetailFragment"
+        android:label="TaskDetailFragment" >
+        <action
+            android:id="@+id/action_taskDetailFragment_to_HomeFragment"
+            app:destination="@id/HomeFragment" />
+        <argument
+            android:name="taskId"
+            app:argType="integer" />
     </fragment>
 
 </navigation>

@@ -40,7 +40,7 @@ class UrgentFragment : Fragment() {
         })
 
         this.vm.tasks.observe(this.viewLifecycleOwner, Observer { tasks ->
-            recyclerView.adapter = TaskAdapter(tasks, vm.actionText())
+            recyclerView.adapter = TaskAdapter(tasks, vm.actionText(), this)
         })
 
         return rootView

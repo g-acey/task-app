@@ -7,6 +7,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.ArrayAdapter
+import android.widget.Toast
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.findNavController
 import org.ibda.myguessgame.databinding.FragmentAddNewTaskBinding
@@ -61,6 +62,7 @@ class AddNewTaskFragment : Fragment() {
 
                     // Call ViewModel function to add the new task
                     vm.addNewTask(title, description, category)
+                    Toast.makeText(requireContext(), "New Task Added", Toast.LENGTH_SHORT).show()
 
                     val action = AddNewTaskFragmentDirections
                         .actionAddNewTaskFragmentToHomeFragment()
