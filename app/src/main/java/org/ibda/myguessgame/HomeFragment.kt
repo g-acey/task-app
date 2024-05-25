@@ -2,7 +2,6 @@ package org.ibda.myguessgame
 
 import androidx.fragment.app.viewModels
 import android.os.Bundle
-import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
@@ -12,8 +11,8 @@ import androidx.navigation.findNavController
 import org.ibda.myguessgame.databinding.FragmentHomeBinding
 
 class HomeFragment : Fragment() {
-    private lateinit var vm: HomeViewModel
-    private lateinit var binding: FragmentHomeBinding
+    private lateinit var vm : HomeViewModel
+    private lateinit var binding : FragmentHomeBinding
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -28,15 +27,21 @@ class HomeFragment : Fragment() {
         this.binding.lifecycleOwner = viewLifecycleOwner
 
         vm.destination.observe(this.viewLifecycleOwner, { newValue ->
-            if (newValue != "") {
-                val action = when (newValue) {
-                    "BottomNav" -> HomeFragmentDirections.actionHomeFragmentToBottomNavFragment(this.vm.destination.value!!)
-                    "AddNewTask" -> HomeFragmentDirections.actionHomeFragmentToAddNewTaskFragment()
-                    else -> null
-                }
-                if (action != null) {
-                    this.vm.destination.value = ""
+            when(newValue) {
+                "AddNewTask" -> {
+                    val action = HomeFragmentDirections
+                        .actionHomeFragmentToAddNewTaskFragment()
                     rootView.findNavController().navigate(action)
+                    vm.destination.value = "" // Reset destination value
+                }
+                "" -> {
+                    // Do nothing if destination is empty
+                }
+                else -> {
+                    val action = HomeFragmentDirections
+                        .actionHomeFragmentToBottomNavFragment(newValue)
+                    rootView.findNavController().navigate(action)
+                    vm.destination.value = "" // Reset destination value
                 }
             }
         })

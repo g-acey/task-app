@@ -3,7 +3,6 @@ package org.ibda.myguessgame
 import android.util.Log
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
-import androidx.lifecycle.ViewModelProvider
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
@@ -15,14 +14,19 @@ class NormalViewModel : ViewModel() {
     private lateinit var taskApiService: TaskApiService
 
     val tasks = MutableLiveData<List<TaskInfo>>()
-
     val destination = MutableLiveData<String>("")
-    init{
+
+    val newTaskTotal = MutableLiveData<Int>(0)
+    val progressTaskTotal = MutableLiveData<Int>(0)
+    val doneTaskTotal = MutableLiveData<Int>(0)
+
+    init {
         this.retrofit = Retrofit.Builder()
             .baseUrl("http://10.0.2.2:5000")
             .addConverterFactory(MoshiConverterFactory.create())
             .build()
         this.taskApiService = this.retrofit.create(TaskApiService::class.java)
+        getTasksByCategoryAndStatus()
     }
 
     fun setDestination(destination: String) {
@@ -30,8 +34,9 @@ class NormalViewModel : ViewModel() {
         getTasksByCategoryAndStatus()
     }
 
-    fun getTasksByCategoryAndStatus(){
-        val call = taskApiService.getTasksByCategoryAndStatus("normal",this.destination.value.toString())
+    private fun getTasksByCategoryAndStatus() {
+        val call = taskApiService.getTasksByCategoryAndStatus(this.destination.value.toString(),"Normal")
+
         call.enqueue(object : Callback<List<TaskInfo>> {
             override fun onFailure(call: Call<List<TaskInfo>>, t: Throwable) {
                 Log.e("NormalViewModel", "Failed to get search results by category and status", t)
@@ -40,6 +45,7 @@ class NormalViewModel : ViewModel() {
             override fun onResponse(call: Call<List<TaskInfo>>, response: Response<List<TaskInfo>>) {
                 if (response.isSuccessful) {
                     tasks.value = response.body()
+                    updateTaskCounts()
                 } else {
                     Log.e("NormalViewModel", "Failed to get results by category and status: ${response.errorBody()?.string()}")
                 }
@@ -47,13 +53,23 @@ class NormalViewModel : ViewModel() {
         })
     }
 
+    private fun updateTaskCounts() {
+        tasks.value?.let { taskList ->
+            for (task in taskList) {
+                when (task.status) {
+                    "New" -> newTaskTotal.value = newTaskTotal.value?.plus(1)
+                    "In Progress" -> progressTaskTotal.value = progressTaskTotal.value?.plus(1)
+                    "Done" -> doneTaskTotal.value = doneTaskTotal.value?.plus(1)
+                }
+            }
+        }
+    }
+
     fun actionText(): String {
-        if(this.destination.value == "new"){
-            return("Take")
-        } else if(this.destination.value == "in progress"){
-            return("Done")
-        } else {
-            return("Details")
+        return when (this.destination.value) {
+            "New" -> "Take"
+            "In Progress" -> "Done"
+            else -> "Details"
         }
     }
 }

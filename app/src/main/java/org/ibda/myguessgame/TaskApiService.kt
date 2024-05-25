@@ -6,20 +6,26 @@ import retrofit2.http.GET
 import retrofit2.http.Path
 import retrofit2.http.Query
 import retrofit2.http.POST
+import retrofit2.http.PUT
 
 interface TaskApiService {
-    @GET("/tasks")
-    fun getTasks(): Call<List<TaskInfo>>
+    @GET("/api/alltask")
+    fun getTasks(): Call<TaskApiResponse>
 
-    @GET("/tasks/{id}")
-    fun getTasks(@Path("id") id: Int): Call<TaskInfo>
-
-    @GET("/tasks")
+    @GET("/api/taskbycategoryandstatus")
     fun getTasksByCategoryAndStatus(
-        @Query("category") category: String,
-        @Query("status") status: String):
-            Call<List<TaskInfo>>
+        @Query("status") status: String,
+        @Query("category") category: String
+    ): Call<List<TaskInfo>>
 
-//    @POST("/tasks")
-//    fun addTask(@Body taskInfo: TaskInfo): Call<TaskInfo>
+    @POST("/api/addtask")
+    fun addTask(@Body addTaskRequest: AddTaskRequest): Call<AddTaskResponse>
+
+    @PUT("/api/editstatus/{id}")
+    fun updateTaskStatus(@Path("id") id: Int): Call<UpdateResponse>
+
 }
+
+data class UpdateResponse(
+    val message: String
+)

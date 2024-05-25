@@ -16,7 +16,8 @@ class UrgentViewModel : ViewModel() {
     val tasks = MutableLiveData<List<TaskInfo>>()
 
     val destination = MutableLiveData<String>("")
-    init{
+
+    init {
         this.retrofit = Retrofit.Builder()
             .baseUrl("http://10.0.2.2:5000")
             .addConverterFactory(MoshiConverterFactory.create())
@@ -29,8 +30,8 @@ class UrgentViewModel : ViewModel() {
         getTasksByCategoryAndStatus()
     }
 
-    fun getTasksByCategoryAndStatus(){
-        val call = taskApiService.getTasksByCategoryAndStatus("urgent",this.destination.value.toString())
+    fun getTasksByCategoryAndStatus() {
+        val call = taskApiService.getTasksByCategoryAndStatus(this.destination.value.toString(),"Urgent")
         call.enqueue(object : Callback<List<TaskInfo>> {
             override fun onFailure(call: Call<List<TaskInfo>>, t: Throwable) {
                 Log.e("UrgentViewModel", "Failed to get search results by category and status", t)
@@ -47,12 +48,10 @@ class UrgentViewModel : ViewModel() {
     }
 
     fun actionText(): String {
-        if(this.destination.value == "new"){
-            return("Take")
-        } else if(this.destination.value == "in progress"){
-            return("Done")
-        } else {
-            return("Details")
+        return when (this.destination.value) {
+            "New" -> "Take"
+            "In Progress" -> "Done"
+            else -> "Details"
         }
     }
 }

@@ -29,38 +29,42 @@ class HomeViewModel : ViewModel() {
         getTasks()
     }
 
-    private fun getTasks(){
+    private fun getTasks() {
         val call = taskApiService.getTasks()
 
-        call.enqueue(object : Callback<List<TaskInfo>>{
-            override fun onFailure(p0: Call<List<TaskInfo>>, p1: Throwable) {
-                Log.e("MainActivity", "Failed to get search results", p1)
+        call.enqueue(object : Callback<TaskApiResponse> {
+            override fun onFailure(call: Call<TaskApiResponse>, t: Throwable) {
+                Log.e("HomeViewModel", "Failed to get search results", t)
             }
 
             override fun onResponse(
-                call: Call<List<TaskInfo>>,
-                response: Response<List<TaskInfo>>
+                call: Call<TaskApiResponse>,
+                response: Response<TaskApiResponse>
             ) {
-                if (response.isSuccessful){
-                    val results = response.body()
-                    if (results!!.isNotEmpty()) {
+                if (response.isSuccessful) {
+                    val results = response.body()?.task
+                    if (results != null && results.isNotEmpty()) {
                         for (result in results) {
+                            Log.i("HomeViewModel", "Task ID: ${result.task_id}, Title: ${result.title}, Description: ${result.description}, Status: ${result.status}, Category: ${result.category}, Started Time: ${result.started_time}, Finished Time: ${result.finished_time}")
+
                             when (result.status) {
-                                "new" -> newTaskTotal.value = newTaskTotal.value?.plus(1)
-                                "in progress" -> progressTaskTotal.value = progressTaskTotal.value?.plus(1)
-                                "done" -> doneTaskTotal.value = doneTaskTotal.value?.plus(1)
+                                "New" -> newTaskTotal.value = newTaskTotal.value?.plus(1)
+                                "In Progress" -> progressTaskTotal.value = progressTaskTotal.value?.plus(1)
+                                "Done" -> doneTaskTotal.value = doneTaskTotal.value?.plus(1)
                             }
                         }
+                    } else {
+                        Log.i("HomeViewModel", "No tasks found")
                     }
                 } else {
-                    Log.e("MainActivity", "Failed to get results \n ${response.errorBody()?.toString() ?: ""}")
+                    Log.e("HomeViewModel", "Failed to get results \n ${response.errorBody()?.toString() ?: ""}")
                 }
             }
         })
     }
 
     fun goToNav(dest: String){
-        this.destination.value = "BottomNav"
+        this.destination.value = dest
     }
 
     fun goToAddTask() {
