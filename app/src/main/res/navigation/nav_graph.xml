@@ -16,6 +16,9 @@
         >
 
         </action>
+        <action
+            android:id="@+id/action_HomeFragment_to_addNewTaskFragment"
+            app:destination="@id/addNewTaskFragment" />
     </fragment>
 
     <fragment
@@ -27,5 +30,10 @@
             android:name="destination"
             app:argType="string"/>
     </fragment>
+
+    <fragment
+        android:id="@+id/addNewTaskFragment"
+        android:name="org.ibda.myguessgame.AddNewTaskFragment"
+        android:label="AddNewTaskFragment" />
 
 </navigation>

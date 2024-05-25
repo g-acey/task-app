@@ -8,6 +8,7 @@ import retrofit2.Callback
 import retrofit2.Response
 import retrofit2.Retrofit
 import retrofit2.converter.moshi.MoshiConverterFactory
+import kotlin.math.log
 
 class HomeViewModel : ViewModel() {
     private lateinit var retrofit: Retrofit
@@ -26,7 +27,6 @@ class HomeViewModel : ViewModel() {
             .build()
         this.taskApiService = this.retrofit.create(TaskApiService::class.java)
         getTasks()
-
     }
 
     private fun getTasks(){
@@ -43,17 +43,12 @@ class HomeViewModel : ViewModel() {
             ) {
                 if (response.isSuccessful){
                     val results = response.body()
-                    val firstTask = results?.firstOrNull()?.title ?: "No Task"
-                    if (results!!.size != 0) {
+                    if (results!!.isNotEmpty()) {
                         for (result in results) {
-                            if (result.status == "new") {
-                                newTaskTotal.value = newTaskTotal.value?.plus(1)
-                            }
-                            if (result.status == "in progress") {
-                                progressTaskTotal.value = progressTaskTotal.value?.plus(1)
-                            }
-                            if (result.status == "done") {
-                                doneTaskTotal.value = doneTaskTotal.value?.plus(1)
+                            when (result.status) {
+                                "new" -> newTaskTotal.value = newTaskTotal.value?.plus(1)
+                                "in progress" -> progressTaskTotal.value = progressTaskTotal.value?.plus(1)
+                                "done" -> doneTaskTotal.value = doneTaskTotal.value?.plus(1)
                             }
                         }
                     }
@@ -64,29 +59,11 @@ class HomeViewModel : ViewModel() {
         })
     }
 
-//    fun addTask(taskInfo: TaskInfo) {
-//        val call = taskApiService.addTask(taskInfo)
-//        call.enqueue(object : Callback<TaskInfo> {
-//            override fun onFailure(call: Call<TaskInfo>, t: Throwable) {
-//                Log.e("HomeViewModel", "Failed to create task", t)
-//            }
-//
-//            override fun onResponse(call: Call<TaskInfo>, response: Response<TaskInfo>) {
-//                if (response.isSuccessful) {
-//                    Log.i("HomeViewModel", "Task created successfully: ${response.body()}")
-//                } else {
-//                    Log.e("HomeViewModel", "Failed to create task: ${response.errorBody()?.string()}")
-//                }
-//            }
-//        })
-//    }
-
-
-
-
     fun goToNav(dest: String){
-        this.destination.value = dest
+        this.destination.value = "BottomNav"
     }
 
-
+    fun goToAddTask() {
+        this.destination.value = "AddNewTask"
+    }
 }
