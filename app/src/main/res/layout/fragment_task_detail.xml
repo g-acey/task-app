@@ -20,7 +20,7 @@
             android:layout_height="0dp"
             android:layout_margin="24dp"
             android:background="@drawable/white_background"
-            app:layout_constraintBottom_toTopOf="@id/btnDone"
+            app:layout_constraintBottom_toTopOf="@id/btnStart"
             app:layout_constraintTop_toTopOf="parent"
             tools:layout_editor_absoluteX="24dp">
 
@@ -150,26 +150,13 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginBottom="16dp"
+                    android:text='@{taskDetail.durationDetail.toString()}'
                     android:textSize="14sp" />
 
             </LinearLayout>
         </ScrollView>
 
         <!-- Done Button -->
-
-
-        <Button
-            android:id="@+id/btnDone"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginBottom="16dp"
-            android:backgroundTint="@color/chocolate"
-
-            android:text="Done"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.882"
-            app:layout_constraintStart_toEndOf="@+id/btnCancel" />
 
         <Button
             android:id="@+id/btnCancel"
@@ -191,11 +178,12 @@
             android:layout_height="wrap_content"
             android:layout_marginBottom="16dp"
             android:backgroundTint="@color/chocolate"
-            android:text="Take task "
+            android:text="Take"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.865"
-            app:layout_constraintStart_toEndOf="@+id/btnCancel" />
+            app:layout_constraintStart_toEndOf="@+id/btnCancel"
+            android:onClick='@{() -> taskDetail.goBack()}'/>
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 

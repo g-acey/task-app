@@ -45,4 +45,10 @@ class ImportantFragment : Fragment() {
 
         return rootView
     }
+
+    override fun onResume() {
+        super.onResume()
+        vm.refreshTasks()
+    }
+
 }

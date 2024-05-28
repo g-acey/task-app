@@ -48,4 +48,10 @@ class HomeFragment : Fragment() {
 
         return rootView
     }
+
+    override fun onResume() {
+        super.onResume()
+        vm.refreshTasks()
+    }
+
 }
