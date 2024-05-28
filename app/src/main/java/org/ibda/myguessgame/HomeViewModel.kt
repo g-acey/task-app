@@ -26,7 +26,7 @@ class HomeViewModel : ViewModel() {
             .addConverterFactory(MoshiConverterFactory.create())
             .build()
         this.taskApiService = this.retrofit.create(TaskApiService::class.java)
-        getTasks()
+//        getTasks()
     }
 
     private fun getTasks() {
@@ -61,6 +61,16 @@ class HomeViewModel : ViewModel() {
                 }
             }
         })
+    }
+
+    fun refreshTasks() {
+        // Clear the current task counts
+        newTaskTotal.value = 0
+        progressTaskTotal.value = 0
+        doneTaskTotal.value = 0
+
+        // Call getTasks to fetch the updated task counts
+        getTasks()
     }
 
     fun goToNav(dest: String){

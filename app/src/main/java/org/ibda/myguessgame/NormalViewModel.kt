@@ -26,7 +26,6 @@ class NormalViewModel : ViewModel() {
             .addConverterFactory(MoshiConverterFactory.create())
             .build()
         this.taskApiService = this.retrofit.create(TaskApiService::class.java)
-        getTasksByCategoryAndStatus()
     }
 
     fun setDestination(destination: String) {
@@ -53,17 +52,9 @@ class NormalViewModel : ViewModel() {
         })
     }
 
-//    private fun updateTaskCounts() {
-//        tasks.value?.let { taskList ->
-//            for (task in taskList) {
-//                when (task.status) {
-//                    "New" -> newTaskTotal.value = newTaskTotal.value?.plus(1)
-//                    "In Progress" -> progressTaskTotal.value = progressTaskTotal.value?.plus(1)
-//                    "Done" -> doneTaskTotal.value = doneTaskTotal.value?.plus(1)
-//                }
-//            }
-//        }
-//    }
+    fun refreshTasks() {
+        getTasksByCategoryAndStatus()
+    }
 
     fun actionText(): String {
         return when (this.destination.value) {
@@ -71,10 +62,6 @@ class NormalViewModel : ViewModel() {
             "In Progress" -> "Done"
             else -> "Details"
         }
-    }
-
-    fun goToTaskDetail() {
-        this.destination.value = "TaskDetail"
     }
 
 }

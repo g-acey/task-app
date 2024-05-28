@@ -26,6 +26,3 @@ interface TaskApiService {
 
 }
 
-data class UpdateResponse(
-    val message: String
-)

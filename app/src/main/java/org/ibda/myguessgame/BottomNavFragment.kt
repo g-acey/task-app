@@ -27,9 +27,20 @@ class BottomNavFragment : Fragment() {
         sharedViewModel = ViewModelProvider(requireActivity()).get(SharedViewModel::class.java)
 
         val destination = BottomNavFragmentArgs.fromBundle(requireArguments()).destination
+
+//        val destination = requireParentFragment().arguments?.getString("destination")
         this.vm.destination.value = destination
 
         sharedViewModel.setDestination(destination)
+
+//        // Check if destination is not null before setting it
+//        if (destination != null) {
+//            // Set the destination value to the view model
+//            this.vm.destination.value = destination
+//
+//            // Set the destination value to the shared view model
+//            sharedViewModel.setDestination(destination)
+//        }
 
         this.binding.botnav = vm
         this.binding.lifecycleOwner = viewLifecycleOwner
