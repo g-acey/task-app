@@ -1,20 +1,19 @@
-# taskInventory
+# Task Inventory
 
-## Panduan Instalasi
+## Installation Guide
 
-### Langkah 1: Download Docker Desktop
+### Step 1: Download Docker Desktop
 
-1. Unduh Docker Desktop dari tautan berikut: [Docker Desktop](https://www.docker.com/products/docker-desktop).
-2. Ikuti instruksi untuk menginstal Docker Desktop di sistem operasi Anda.
+1. Download Docker Desktop from the following link: [Docker Desktop](https://www.docker.com/products/docker-desktop).
+2. Follow the instructions to install Docker Desktop on your operating system.
 
-### Langkah 2: Jalankan Backend
+### Step 2: Run the Backend
 
-1. Buka terminal atau Command Prompt.
-2. Masuk ke direktori `Backend` dari proyek Anda. Anda bisa menggunakan perintah berikut jika menggunakan terminal di sistem operasi berbasis Unix (Linux/MacOS):
+1. Open a terminal or Command Prompt.
+2. Navigate to the `Backend` directory of your project. You can use the following command if you're using a terminal on a Unix-based operating system (Linux/MacOS):
 
    ```sh
    cd path/to/Backend
-3. Setelah berada di direktori backend, jalankan perintah berikut untuk memulai layanan menggunakan Docker Compose:
-
-    ```sh
-    docker compose up
+3. Once in the backend directory, run the following command to start the service using Docker Compose:
+   ```sh
+   docker compose up
