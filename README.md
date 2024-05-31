@@ -38,4 +38,4 @@ Whether you need to organize your personal to-dos or keep track of work-related 
 
 Thanks to the following people who have contributed to this project:
 
-- [Elisabeth Violina]([https://github.com/elisabethviolinaa]) - Improved UI design
+- [Elisabeth Violina](https://github.com/elisabethviolinaa) - Improved UI design
