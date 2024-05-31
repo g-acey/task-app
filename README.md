@@ -33,3 +33,9 @@ Whether you need to organize your personal to-dos or keep track of work-related 
 3. Once in the backend directory, run the following command to start the service using Docker Compose:
    ```sh
    docker compose up
+
+## Contributors
+
+Thanks to the following people who have contributed to this project:
+
+- [Elisabeth Violina]([https://github.com/elisabethviolinaa]) - Improved UI design
