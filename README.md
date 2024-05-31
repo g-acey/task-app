@@ -14,7 +14,7 @@ Whether you need to organize your personal to-dos or keep track of work-related 
 ![image](https://github.com/g-acey/task-app/assets/125923104/74f0e8c0-be67-4d70-9246-3c5e09c4bc60)
 ![image](https://github.com/g-acey/task-app/assets/125923104/1cf93175-005d-47b7-976e-1d6b5c08d953)
 ![image](https://github.com/g-acey/task-app/assets/125923104/a443ce76-d553-4214-ad9b-985931960d28)
-![image](https://github.com/g-acey/task-app/assets/125923104/921fe821-2153-4fa3-b6c9-f571ab78068d)
+![image](https://github.com/g-acey/task-app/assets/125923104/32d2e45d-dc5a-4d1c-a47f-4261331aeec8)
 
 ## Installation Guide
 
