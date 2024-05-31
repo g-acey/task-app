@@ -1,4 +1,20 @@
-# Task Inventory
+# Task App
+
+Task App is a simple and intuitive Android application designed to help you manage your daily tasks efficiently.<br>
+Whether you need to organize your personal to-dos or keep track of work-related tasks, the Task App provides a user-friendly interface and essential features to enhance your productivity.
+
+## Features
+
+- Task are sorted into 3 stages (New, In Progress, or Done).
+- Task are organized by importance (Normal, Urgent, or Important).
+- The user can see the complete task details of each tasks.
+- The user can add new task easily.
+
+## Preview
+![image](https://github.com/g-acey/task-app/assets/125923104/74f0e8c0-be67-4d70-9246-3c5e09c4bc60)
+![image](https://github.com/g-acey/task-app/assets/125923104/1cf93175-005d-47b7-976e-1d6b5c08d953)
+![image](https://github.com/g-acey/task-app/assets/125923104/a443ce76-d553-4214-ad9b-985931960d28)
+![image](https://github.com/g-acey/task-app/assets/125923104/921fe821-2153-4fa3-b6c9-f571ab78068d)
 
 ## Installation Guide
 
